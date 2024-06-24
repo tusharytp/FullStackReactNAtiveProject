@@ -161,6 +161,12 @@ android {
         }
     }
 
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+    project.ext.vectoricons = [
+        iconFontNames: ['FontAwesome.ttf', 'Entypo.ttf', 'Feather.ttf'] // Add any other icon fonts you need
+    ]
+
+
     if (isNewArchitectureEnabled()) {
         // We configure the NDK build only if you decide to opt-in for the New Architecture.
         externalNativeBuild {
@@ -255,6 +261,8 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+
+    implementation project(':react-native-splash-screen') // Add this line
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'
